@@ -13,6 +13,8 @@ XMPP_SETTINGS = {
 EMAIL_SETTINGS = {
     'user': "alerting@yourorganisation.org",
     'password': "YourPassword",
+    'host': "smtp.example.org",
+    'port': "587"
 }
 
 TWILIO_SETTINGS = {

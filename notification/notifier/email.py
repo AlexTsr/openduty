@@ -1,4 +1,3 @@
-from openduty.models import Incident
 
 __author__ = 'deathowl'
 
@@ -10,8 +9,10 @@ class EmailNotifier:
         self.__config = config
     def notify(self, notification):
 
-        gmail_user = self.__config['user']
-        gmail_pwd = self.__config['password']
+        smtp_user = self.__config['user']
+        smtp_pwd = self.__config['password']
+        smtp_host = self.__config['host']
+        smtp_port = self.__config['port']
         truncate_length = int(self.__config.get('max_subject_length', 100))
         FROM = self.__config['user']
         TO = [notification.user_to_notify.email]
@@ -25,10 +26,10 @@ class EmailNotifier:
         message = """\From: %s\nTo: %s\nSubject: %s\n\n%s
             """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
         try:
-            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server = smtplib.SMTP(smtp_host, smtp_port)
             server.starttls()
             server.ehlo()
-            server.login(gmail_user, gmail_pwd)
+            server.login(smtp_user, smtp_pwd)
             server.sendmail(FROM, TO, message)
             server.close()
             print 'successfully sent the mail'
