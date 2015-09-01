@@ -11,9 +11,10 @@ XMPP_SETTINGS = {
 }
 
 EMAIL_SETTINGS = {
-    'user': "alerting@yourorganisation.org",
+    'user': "alerting",
     'password': "YourPassword",
     'host': "smtp.example.org",
+    'from': "alerting@yourorganisation.org"
     'port': "587"
 }
 
