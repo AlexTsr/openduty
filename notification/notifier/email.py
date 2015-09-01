@@ -8,7 +8,6 @@ class EmailNotifier:
     def __init__(self, config):
         self.__config = config
     def notify(self, notification):
-
         smtp_user = self.__config['user']
         smtp_pwd = self.__config['password']
         smtp_host = self.__config['host']
